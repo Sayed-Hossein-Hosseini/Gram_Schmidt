@@ -39,3 +39,9 @@ def create_orthogonal_vector(number_vector):
 
     orthogonal_vectors = np.append(orthogonal_vectors, orthogonal_vector)
 
+# orthogonal unit vector = orthogonal vector / norm(orthogonal vector)
+def create_orthogonal_unit_vector(number_orthogonal_vector):
+    global orthogonal_unit_vectors
+    orthogonal_unit_vector = np.divide(orthogonal_vectors[number_orthogonal_vector - 1], np.linalg.norm(orthogonal_vectors[number_orthogonal_vector - 1]))
+
+    np.append(orthogonal_unit_vectors, orthogonal_unit_vector)
