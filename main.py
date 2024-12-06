@@ -9,7 +9,7 @@ def get_vectors():
     number_vector = int(input("Please enter the number of vectors : "))
     dimension = int(input("Please enter the dimension or size of the array : "))
 
-    vectors = np.array([])
+    global vectors
 
     # Taking values from input and putting them into an array
     for x in np.arange(number_vector) :
@@ -31,10 +31,11 @@ def projection(vector, orthgonal_vector):
 
 # orthogonal vector = vector - Sigma(Projection vector)
 def create_orthogonal_vector(number_vector):
-    orthogonal_vector = vector[:, number_vector - 1]
+    global orthogonal_vectors
+    orthogonal_vector = vectors[:, number_vector - 1]
 
     for _ in np.arange(number_vector):
         orthogonal_vector -= projection(vectors[:, number_vector - 1], orthogonal_vectors[_])
 
-    return orthogonal_vector
+    orthogonal_vectors = np.append(orthogonal_vectors, orthogonal_vector)
 
