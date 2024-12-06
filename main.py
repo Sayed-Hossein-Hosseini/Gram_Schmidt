@@ -48,9 +48,14 @@ def create_orthogonal_vector(number_vector):
 # orthogonal unit vector = orthogonal vector / norm(orthogonal vector)
 def create_orthogonal_unit_vector(number_orthogonal_vector):
     global orthogonal_unit_vectors
-    orthogonal_unit_vector = np.divide(orthogonal_vectors[number_orthogonal_vector - 1], np.linalg.norm(orthogonal_vectors[number_orthogonal_vector - 1]))
 
-    np.append(orthogonal_unit_vectors, orthogonal_unit_vector)
+    orthogonal_unit_vector = np.divide(orthogonal_vectors[number_orthogonal_vector], np.linalg.norm(orthogonal_vectors[number_orthogonal_vector]))
+
+    if (number_orthogonal_vector == 0):
+        orthogonal_unit_vectors = np.append(orthogonal_unit_vectors, orthogonal_unit_vector)
+        orthogonal_unit_vectors = orthogonal_unit_vectors.reshape(orthogonal_unit_vectors.size, 1)
+    else:
+        orthogonal_unit_vectors = np.append(orthogonal_unit_vectors, orthogonal_unit_vector.reshape(orthogonal_unit_vector.size, 1), axis=1)
 
 
 def main():
@@ -65,7 +70,8 @@ def main():
     for _ in np.arange(vectors.shape[1]):
         create_orthogonal_vector(_)
 
-    # print(orthogonal_vectors)
+    for _ in np.arange(orthogonal_vectors.shape[1]):
+        create_orthogonal_unit_vector(_)
 
 if __name__ == '__main__':
     main()
