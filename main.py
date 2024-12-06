@@ -45,3 +45,14 @@ def create_orthogonal_unit_vector(number_orthogonal_vector):
     orthogonal_unit_vector = np.divide(orthogonal_vectors[number_orthogonal_vector - 1], np.linalg.norm(orthogonal_vectors[number_orthogonal_vector - 1]))
 
     np.append(orthogonal_unit_vectors, orthogonal_unit_vector)
+
+
+def main():
+    get_vectors()
+
+    print("\nVectors : \n")
+    column = []
+    for _ in np.arange(vectors.shape[1]):
+        column.append(f"Vector {_}")
+    print(pd.DataFrame(vectors, columns=column))
+    
