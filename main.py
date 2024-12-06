@@ -61,11 +61,11 @@ def create_orthogonal_unit_vector(number_orthogonal_vector):
 def main():
     get_vectors()
 
-    # print("\nVectors : \n")
-    # column = []
-    # for _ in np.arange(vectors.shape[1]):
-    #     column.append(f"Vector {_}")
-    # print(pd.DataFrame(vectors, columns=column))
+    print("\nVectors :")
+    column = []
+    for _ in np.arange(vectors.shape[1]):
+        column.append(f"Vector {_ + 1}")
+    print(pd.DataFrame(vectors, columns=column))
 
     for _ in np.arange(vectors.shape[1]):
         create_orthogonal_vector(_)
@@ -73,5 +73,13 @@ def main():
     for _ in np.arange(orthogonal_vectors.shape[1]):
         create_orthogonal_unit_vector(_)
 
+    print("\nOrthogonal_Unit_Vectors :")
+    column = []
+    for _ in np.arange(orthogonal_unit_vectors.shape[1]):
+        column.append(f"Vector {_ + 1}")
+    print(pd.DataFrame(orthogonal_unit_vectors, columns=column))
+
 if __name__ == '__main__':
     main()
+
+
