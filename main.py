@@ -21,7 +21,7 @@ def get_vectors():
     # Converting an array to a column and placing the members of an array in a column
     vectors = vectors.reshape(number_vector, dimension).T
 
-    # Projection = (<vector, orthogonal vector> / <orthogonal vector, orthogonal vector>) * orthogonal vector
+# Projection = (<vector, orthogonal vector> / <orthogonal vector, orthogonal vector>) * orthogonal vector
 def projection(vector, orthgonal_vector):
     inner_v_u = vector.dot(orthogonal_vector)
     inner_u_u = orthogonal_vector.dot(orthogonal_vector)
@@ -29,4 +29,12 @@ def projection(vector, orthgonal_vector):
 
     return proj
 
-def create_orthogonal_vector()
+# orthogonal vector = vector - Sigma(Projection vector)
+def create_orthogonal_vector(number_vector):
+    orthogonal_vector = vector[:, number_vector - 1]
+
+    for _ in np.arange(number_vector):
+        orthogonal_vector -= projection(vectors[:, number_vector - 1], orthogonal_vectors[_])
+
+    return orthogonal_vector
+
