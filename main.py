@@ -21,10 +21,12 @@ def get_vectors():
     # Converting an array to a column and placing the members of an array in a column
     vectors = vectors.reshape(number_vector, dimension).T
 
-
-def projection(number_vector, number_orthgonal_vector):
-    inner_v_u = vectors[number_vector - 1].dot(orthogonal_vectors[number_orthgonal_vector - 1])
-    inner_u_u = orthogonal_vectors[number_orthgonal_vector - 1].dot(orthogonal_vectors[number_orthgonal_vector - 1])
-    proj = (inner_v_u / inner_u_u) * orthogonal_vectors[number_orthgonal_vector - 1]
+    # Projection = (<vector, orthogonal vector> / <orthogonal vector, orthogonal vector>) * orthogonal vector
+def projection(vector, orthgonal_vector):
+    inner_v_u = vector.dot(orthogonal_vector)
+    inner_u_u = orthogonal_vector.dot(orthogonal_vector)
+    proj = (inner_v_u / inner_u_u) * orthogonal_vector
 
     return proj
+
+def create_orthogonal_vector()
