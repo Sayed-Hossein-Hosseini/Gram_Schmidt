@@ -22,7 +22,7 @@ def get_vectors():
     vectors = vectors.reshape(number_vector, dimension).T
 
 # Projection = (<vector, orthogonal vector> / <orthogonal vector, orthogonal vector>) * orthogonal vector
-def projection(vector, orthgonal_vector):
+def projection(vector, orthogonal_vector):
     inner_v_u = vector.dot(orthogonal_vector)
     inner_u_u = orthogonal_vector.dot(orthogonal_vector)
     proj = (inner_v_u / inner_u_u) * orthogonal_vector
@@ -32,12 +32,18 @@ def projection(vector, orthgonal_vector):
 # orthogonal vector = vector - Sigma(Projection vector)
 def create_orthogonal_vector(number_vector):
     global orthogonal_vectors
-    orthogonal_vector = vectors[:, number_vector - 1]
+    orthogonal_vector = vectors[:, number_vector]
+    orthogonal_vector = orthogonal_vector.reshape(orthogonal_vector.size, 1)
 
     for _ in np.arange(number_vector):
-        orthogonal_vector -= projection(vectors[:, number_vector - 1], orthogonal_vectors[_])
+        orthogonal_vector = np.subtract(orthogonal_vector.T, projection(vectors[:, number_vector], orthogonal_vectors[:, _]))
+        orthogonal_vector = orthogonal_vector.T
 
-    orthogonal_vectors = np.append(orthogonal_vectors, orthogonal_vector)
+    if(number_vector == 0):
+        orthogonal_vectors = np.append(orthogonal_vectors, orthogonal_vector)
+        orthogonal_vectors = orthogonal_vectors.reshape(orthogonal_vectors.size, 1)
+    else:
+        orthogonal_vectors = np.append(orthogonal_vectors, orthogonal_vector, axis=1)
 
 # orthogonal unit vector = orthogonal vector / norm(orthogonal vector)
 def create_orthogonal_unit_vector(number_orthogonal_vector):
@@ -50,9 +56,16 @@ def create_orthogonal_unit_vector(number_orthogonal_vector):
 def main():
     get_vectors()
 
-    print("\nVectors : \n")
-    column = []
+    # print("\nVectors : \n")
+    # column = []
+    # for _ in np.arange(vectors.shape[1]):
+    #     column.append(f"Vector {_}")
+    # print(pd.DataFrame(vectors, columns=column))
+
     for _ in np.arange(vectors.shape[1]):
-        column.append(f"Vector {_}")
-    print(pd.DataFrame(vectors, columns=column))
-    
+        create_orthogonal_vector(_)
+
+    # print(orthogonal_vectors)
+
+if __name__ == '__main__':
+    main()
