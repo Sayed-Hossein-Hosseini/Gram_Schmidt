@@ -58,4 +58,23 @@ Let's consider a set of vectors <b>{v₁, v₂, ..., vₙ}</b> in a Euclidean sp
 
 ---
 
+## 👨‍💻 Authors
+
+- Sayyed Hossein Hosseini Dolat Abadi
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+## ⏳🏋️‍♂️ Try It Now
+
 Feel free to run the program to explore how it works or experiment with the algorithm using real-world data! 😊
+
+To see how the algorithm works, I suggest you visit the following site:
+<p align = "center">
+<b><a href = "https://www.emathhelp.net/calculators/linear-algebra/gram-schmidt-calculator/" target = "_blanck">Gram-Schmidt Calculator</a></b>
+</p>
