@@ -36,7 +36,6 @@ Let's consider a set of vectors <b>{v₁, v₂, ..., vₙ}</b> in a Euclidean sp
 
 1. **`projection(vector, orthogonal_vector)`**
    - **Purpose:** Computes the projection of a vector onto another vector.
-   - **Formula:** \( \text{proj}_{u_i}(v_k) \) as defined above.
 
 2. **`create_orthogonal_vector(index)`**
    - **Purpose:** Constructs an orthogonal vector by subtracting the projections of the current vector onto all previously computed orthogonal vectors.
@@ -44,7 +43,6 @@ Let's consider a set of vectors <b>{v₁, v₂, ..., vₙ}</b> in a Euclidean sp
 
 3. **`create_orthogonal_unit_vector(index)`**
    - **Purpose:** Normalizes the orthogonal vectors to create unit vectors.
-   - **Formula:** \( e_k = \frac{u_k}{\|u_k\|} \).
 
 4. **`get_vectors()`**
    - **Purpose:** Collects user input for the number of vectors, their dimensions, and their values. Initializes data structures for computations.
